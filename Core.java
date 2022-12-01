@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.ToDoubleBiFunction;
 
 public class Core {
     public static void main(String[] args) {
@@ -15,6 +16,7 @@ public class Core {
         // checking method worked
         System.out.println();
         System.out.println(SectionList.get(1).getClass());
+        
 
     }
 

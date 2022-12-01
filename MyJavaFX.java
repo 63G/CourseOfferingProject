@@ -49,7 +49,7 @@ public class MyJavaFX extends Application {
 
       Image img = new Image("شعار الجامعة.png");
       stage.getIcons().add(img);
-      stage.setTitle("this is my javafx project");
+      stage.setTitle("Available Courses Next Semester");
       stage.setScene(scene);
       stage.show();
     } catch (IOException e) {

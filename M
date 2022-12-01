@@ -32,18 +32,18 @@ public class eeee {
 // bewlow this is my tests code(Hejazi)
 // please don't change anything
 
-Group root = new Group();
-stage.setTitle("This is the title");
+// Group root = new Group();
+// stage.setTitle("This is the title");
       
   
-Text text = new Text("this is a text");
-text.setX(50);
-text.setY(50);
-text.setFont(Font.font(BUTTON_FONT,50));
-text.setFill(Color.LIMEGREEN);
+// Text text = new Text("this is a text");
+// text.setX(50);
+// text.setY(50);
+// text.setFont(Font.font(BUTTON_FONT,50));
+// text.setFill(Color.LIMEGREEN);
     
 
     
-root.getChildren().add(text);
-stage.setScene(scene);
-stage.show();
+// root.getChildren().add(text);
+// stage.setScene(scene);
+// stage.show();

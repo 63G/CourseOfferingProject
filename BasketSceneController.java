@@ -22,6 +22,9 @@ public class BasketSceneController {
         Parent root = FXMLLoader.load(getClass().getResource("ScheduleSceneController.fxml"));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+
+
+        stage.setTitle("Schedule Planner");
         stage.setScene(scene);
         stage.show();
     }
