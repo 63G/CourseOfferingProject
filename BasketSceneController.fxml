@@ -54,7 +54,7 @@
             <HBox prefHeight="49.0" prefWidth="818.0">
                <children>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button fx:id="Next" mnemonicParsing="false" onAction="#OnNextClicked" text="Next">
+                  <Button fx:id="Next" mnemonicParsing="false" onAction="#switchToScheduleScene" text="Next">
                      <padding>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </padding>

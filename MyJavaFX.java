@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Base64;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -39,13 +40,15 @@ public class MyJavaFX extends Application {
   public void start(Stage stage) {
     //Stage stage = new Stage();  //you can add a stage if you want
     try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BasketSceneController.fxml"));
-      Parent root = (Parent) fxmlLoader.load();
+      Parent root = FXMLLoader.load(getClass().getResource("BasketSceneController.fxml"));
       Scene scene = new Scene(root);
+      
+
+
+
+
       Image img = new Image("شعار الجامعة.png");
       stage.getIcons().add(img);
-
-
       stage.setTitle("this is my javafx project");
       stage.setScene(scene);
       stage.show();
