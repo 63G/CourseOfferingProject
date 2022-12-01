@@ -1,16 +1,3 @@
-// import java.awt.Color;
-// import java.io.IOException;
-
-// import javafx.application.Application;
-// import javafx.fxml.FXML;
-// import javafx.fxml.FXMLLoader;
-// import javafx.scene.Group;
-// import javafx.scene.Parent;
-// import javafx.scene.Scene;
-// import javafx.scene.control.Button;
-// import javafx.scene.effect.ColorAdjust;
-// import javafx.stage.Stage;
-// import javafx.scene.*;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -41,7 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 
-public class MainScene extends Application {
+public class MyJavaFX extends Application {
   private final int STAGE_WIDTH = 800;
   private final int STAGE_HEIGHT = 350;
   private final String BUTTON_FONT = "Verdana";
@@ -52,7 +39,7 @@ public class MainScene extends Application {
   public void start(Stage stage) {
     //Stage stage = new Stage();  //you can add a stage if you want
     try {
-      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainSceneController.fxml"));
+      FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("BasketSceneController.fxml"));
       Parent root = (Parent) fxmlLoader.load();
       Scene scene = new Scene(root);
       Image img = new Image("شعار الجامعة.png");
