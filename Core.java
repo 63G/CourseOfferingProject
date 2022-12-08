@@ -14,27 +14,15 @@ public class Core {
         OfferingToObject(Offering, SectionList);
         // checking method worked
         System.out.println();
-        System.out.println(SectionList);
-        getStudentCourses(Plan, "ICS 108");
-        //
+        Section lmao = (Section) SectionList.get(50);
+        System.out.println("LLLL");
+        System.out.println(lmao.getCourseName());
+        System.out.println(lmao.getCreditHours());
 
-    }
-    public static void getStudentCourses(File stuPlan, String Coursename){
-        try{
-            List<String> someList = new ArrayList<>();
-            Scanner readFile = new Scanner(stuPlan);
-            readFile.nextLine(); // the header
-            String current = readFile.nextLine();
-            System.out.println(current);
-            while(readFile.hasNext()){
-                String[] info = current.split(","); // we can create Course classes from this...
-                someList.add(Arrays.toString(info));
-                current = readFile.nextLine();
-            }
-            System.out.println(someList);
-        } catch (FileNotFoundException e) {
-            System.out.println("File isn't found");
-        }
+        System.out.println(lmao.getCorequisite());
+        System.out.println(lmao.getPrerequisite());
+
+        //
 
     }
     // i'll try to make this method general for all files.

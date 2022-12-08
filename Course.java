@@ -1,9 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Course {
     private String CourseName;
@@ -11,28 +8,50 @@ public class Course {
     private List<String> Corequisite;
     private int CreditHours;
     //static int SectionCount = 0;
-    private boolean hasALab;
-    Course(String CourseName){
-        this.CourseName = CourseName;
+    private boolean hasALab; // ?? how to use this information
 
+    Course(String CourseName) {
+        this.CourseName = CourseName;
+        getStudentPlan(new File("DegreePlan.csv"), CourseName);
         // using the course name we create a list of prerequisite and corequisites
     }
-    public static void getStudentCourses(File stuPlan, String name){
+
+    public void getStudentPlan(File stuPlan, String Coursename){
         try{
-            List<String> someList = new ArrayList<>();
             Scanner readFile = new Scanner(stuPlan);
             readFile.nextLine(); // the header
             String current = readFile.nextLine();
+            System.out.println(current);
             while(readFile.hasNext()){
                 String[] info = current.split(","); // we can create Course classes from this...
-                someList.add(Arrays.toString(info));
-                current = readFile.nextLine();
+                if (info[0].equals(Coursename)) {
+                    this.Prerequisite = List.of(info[2].split(";"));
+                    this.Corequisite =  List.of(info[3].split(";"));
+                    this.CreditHours = Integer.parseInt(info[1]);
+                }
+
+                    current = readFile.nextLine();
             }
-            System.out.println(someList);
         } catch (FileNotFoundException e) {
             System.out.println("File isn't found");
         }
-    public static void locatePrerequisite(String courseName){
 
     }
+
+    public List<String> getPrerequisite() {
+        return Prerequisite;
+    }
+
+    public int getCreditHours() {
+        return CreditHours;
+    }
+
+    public List<String> getCorequisite() {
+        return Corequisite;
+    }
+
+    public String getCourseName() {
+        return CourseName;
+    }
 }
+
