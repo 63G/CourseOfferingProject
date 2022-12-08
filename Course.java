@@ -68,5 +68,12 @@ public class Course {
         return Grade;
     }
 
+
+    
+    public String toString() {
+        
+        return " The course name is: "+CourseName+" prerequisite of the course is: "+Prerequisite.get(0)+" The course prequisite is : "+Corequisite.get(0)+" the CreditHours is : "+CreditHours;
+    }
+
 }
 
