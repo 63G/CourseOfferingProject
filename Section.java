@@ -9,7 +9,7 @@ public class Section extends Course{
     private String Status; // either open or closed
     private String waitList; // to register in it if the status is closed.
     Section(String courseName, String Secnum, String Activity ,
-            int CRN, String Instructorname, String Day, String Location, String time,
+            int CRN,String Day, String Instructorname, String Location, String time,
             String Status, String waitList){
         super(courseName);
         this.SectionNumber = Secnum;
@@ -57,4 +57,12 @@ public class Section extends Course{
     public String getWaitList() {
         return waitList;
     }
+
+
+
+public String toString() {
+    
+    return  "the instructor is : "+Instructor+" this crn is: "+CRN+" section number is: "+SectionNumber+" the activity is: "+Activity+" the day is: "+Day+" the time is "+time+" the location is: "+Location+" the status is: "+Status+" waitlist condition is: "+waitList;
+}
+
 }
