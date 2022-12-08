@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.ToDoubleBiFunction;
 
 public class Core {
     public static void main(String[] args) {
@@ -15,18 +14,35 @@ public class Core {
         OfferingToObject(Offering, SectionList);
         // checking method worked
         System.out.println();
-        System.out.println(SectionList.get(1).getClass());
-        
+        System.out.println(SectionList);
+        getStudentCourses(Plan, "ICS 108");
+        //
 
     }
+    public static void getStudentCourses(File stuPlan, String Coursename){
+        try{
+            List<String> someList = new ArrayList<>();
+            Scanner readFile = new Scanner(stuPlan);
+            readFile.nextLine(); // the header
+            String current = readFile.nextLine();
+            System.out.println(current);
+            while(readFile.hasNext()){
+                String[] info = current.split(","); // we can create Course classes from this...
+                someList.add(Arrays.toString(info));
+                current = readFile.nextLine();
+            }
+            System.out.println(someList);
+        } catch (FileNotFoundException e) {
+            System.out.println("File isn't found");
+        }
 
+    }
     // i'll try to make this method general for all files.
     public static void OfferingToObject(File fileToRead, List<Course> list){
         try {
             Scanner input = new Scanner(fileToRead);
             input.nextLine(); // this is just a header
             String line = input.nextLine();
-            System.out.println(line);
             while(input.hasNext()){
                 String[] SectionInfo = line.split(",");
                 System.out.println(Arrays.toString(SectionInfo));
@@ -42,6 +58,8 @@ public class Core {
             System.out.println("File Isn't found!");
             throw new RuntimeException(e);
         }
+        //
+
     }
     // lets read other files
 
