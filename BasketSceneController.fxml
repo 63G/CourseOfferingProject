@@ -39,7 +39,7 @@
             </HBox>
             <TableView fx:id="table" prefHeight="468.0" prefWidth="818.0">
                <columns>
-                  <TableColumn fx:id="CourseSec" prefWidth="90.5" text="Course-Sec" />
+                  <TableColumn fx:id="CourseSec" editable="false" prefWidth="90.5" text="Course-Sec" />
                   <TableColumn fx:id="Activity" prefWidth="61.0" text="Activity" />
                   <TableColumn fx:id="CRN" prefWidth="49.0" text="CRN" />
                   <TableColumn fx:id="CourseName" prefWidth="88.5" text="Course Name" />

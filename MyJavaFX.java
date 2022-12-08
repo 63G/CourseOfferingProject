@@ -46,7 +46,7 @@ public class MyJavaFX extends Application {
 
 
 
-
+      
       Image img = new Image("شعار الجامعة.png");
       stage.getIcons().add(img);
       stage.setTitle("Available Courses Next Semester");

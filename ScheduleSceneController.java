@@ -1,7 +1,6 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -12,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
@@ -32,6 +32,8 @@ public class ScheduleSceneController implements Initializable {
         stage.show();
     }
 
+    // Rectangle rectangle = new Rectangle(102, );
+
     @FXML
     private Label myLable;
 
@@ -47,14 +49,19 @@ public class ScheduleSceneController implements Initializable {
     @FXML
     private URL location;
 
+    DraggableMaker draggableMaker = new DraggableMaker();
 
     @FXML
     void initialize() {
-
+        draggableMaker.makeDraggable(rect1);
     }
 
+    @FXML
+    private Rectangle rect1;
 
-    @Override
+    
+
+    @Override//This method to add list elemnts to table in GUI
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
         myListView.getItems().addAll(food);
@@ -68,6 +75,8 @@ public class ScheduleSceneController implements Initializable {
             }
             
         });
+
+        
     }
 
 }
