@@ -7,11 +7,19 @@ public class Course {
     private List<String> Prerequisite;
     private List<String> Corequisite;
     private int CreditHours;
+    private String Grade;
     //static int SectionCount = 0;
     private boolean hasALab; // ?? how to use this information
 
     Course(String CourseName) {
         this.CourseName = CourseName;
+        getStudentPlan(new File("DegreePlan.csv"), CourseName);
+        // using the course name we create a list of prerequisite and corequisites
+    }
+
+    Course(String CourseName, String Grade) {
+        this.CourseName = CourseName;
+        this.Grade = Grade;
         getStudentPlan(new File("DegreePlan.csv"), CourseName);
         // using the course name we create a list of prerequisite and corequisites
     }
@@ -53,5 +61,12 @@ public class Course {
     public String getCourseName() {
         return CourseName;
     }
+    public void setGrade(String grade) {
+        Grade = grade;
+    }
+    public String getGrade() {
+        return Grade;
+    }
+
 }
 
