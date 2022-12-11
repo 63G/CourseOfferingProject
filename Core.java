@@ -14,8 +14,8 @@ public class Core {
         OfferingToObject(Offering, SectionList);
         // checking method worked
         System.out.println();
-        Section lmao = (Section) SectionList.get(50);
-        System.out.println("LLLL");
+        Section lmao = (Section) SectionList.get(71);
+        System.out.println("-------------------------------------------");
         System.out.println(lmao.getCourseName());
         System.out.println(lmao.getCreditHours());
 
@@ -33,14 +33,12 @@ public class Core {
             String line = input.nextLine();
             while(input.hasNext()){
                 String[] SectionInfo = line.split(",");
-                System.out.println(Arrays.toString(SectionInfo));
                 String[] SectionNamenNumber = SectionInfo[0].split("-");
-                System.out.println(Arrays.toString(SectionNamenNumber));
                 list.add(new Section(SectionNamenNumber[0], SectionNamenNumber[1],
-                        SectionInfo[1], Integer.parseInt(SectionInfo[2]), SectionInfo[3], SectionInfo[4], SectionInfo[5], SectionInfo[6], SectionInfo[7], SectionInfo[8]));
+                        SectionInfo[1], Integer.parseInt(SectionInfo[2]), SectionInfo[3], SectionInfo[4], SectionInfo[5], SectionInfo[6], SectionInfo[7], SectionInfo[8], SectionInfo[9]));
                 line = input.nextLine();
             }
-            System.out.println("DONE");
+            System.out.println("DONE, We have sectiob objects");
             input.close();
         } catch (FileNotFoundException e) {
             System.out.println("File Isn't found!");

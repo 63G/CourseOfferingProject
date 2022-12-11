@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Course {
     private String CourseName;
-    private List<String> Prerequisite;
-    private List<String> Corequisite;
+    private List<String> Prerequisite = new ArrayList<>();
+    private List<String> Corequisite = new ArrayList<>();
     private int CreditHours;
     private String Grade;
     //static int SectionCount = 0;
@@ -32,13 +32,17 @@ public class Course {
             System.out.println(current);
             while(readFile.hasNext()){
                 String[] info = current.split(","); // we can create Course classes from this...
+                System.out.println(Arrays.toString(info));
                 if (info[0].equals(Coursename)) {
-                    this.Prerequisite = List.of(info[2].split(";"));
-                    this.Corequisite =  List.of(info[3].split(";"));
+                    String[] PrerequisiteArr = info[2].split(";");
+                    String[] CorequisiteArr =  info[3].split(";");
+                    //System.out.println(Arrays.toString(PrerequisiteArr));
+                    this.Prerequisite.addAll(Arrays.asList(PrerequisiteArr));
+                    this.Corequisite.addAll(Arrays.asList(CorequisiteArr));
                     this.CreditHours = Integer.parseInt(info[1]);
                 }
 
-                    current = readFile.nextLine();
+                current = readFile.nextLine();
             }
         } catch (FileNotFoundException e) {
             System.out.println("File isn't found");
@@ -68,12 +72,4 @@ public class Course {
         return Grade;
     }
 
-
-    
-    public String toString() {
-        
-        return " The course name is: "+CourseName+" prerequisite of the course is: "+Prerequisite.get(0)+" The course prequisite is : "+Corequisite.get(0)+" the CreditHours is : "+CreditHours;
-    }
-
 }
-
