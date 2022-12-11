@@ -11,20 +11,27 @@ public class Student {
     private List<Course> NeededCourses = new ArrayList<>();
     private List<Section> AvailableSections = new ArrayList<>();
 
-    public Student(File FinishedCourses) {
-        Student.getFinishedCourses(FinishedCourses, finishedCourses);
+   public Student(File FinishedCourses) {
+        getFinishedCourses(FinishedCourses, finishedCourses);
         getStudentPlan(new File("DegreePlan.csv"));
+        File Offering = new File("CourseOffering.csv");
+        OfferingToObject(Offering, SectionList);
+        AvailableCourses(AvailableCourses);
 
     }
-    public void AvailableCourses(){
-        for(Course e : NeededCourses){
-            for(Course i : finishedCourses){
-                if(e.getPrerequisite().contains(i) || e.getCorequisite().contains(i));
-                AvailableSections.add((Section) e);
-            }
+    public void AvailableCourses(List<Course> AvailableCourses){
+        for (int i = 0; i < Core.SectionList.size(); i++) {
+            if (!(Core.SectionList.get(i).getPrerequisiteCourse()==null)) {
+                
+
+            
+            boolean condition = Core.SectionList.get(i).getPrerequisiteCourse().contains(finishedCourses.get(0));  
+            if (!condition){
+                AvailableCourses.add(Core.SectionList.get(i));
+                
+            }}
         }
-
-    }
+        }
     public void getStudentPlan(File stuPlan){
         try{
             Scanner readFile = new Scanner(stuPlan);
