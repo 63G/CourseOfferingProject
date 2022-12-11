@@ -13,14 +13,20 @@ public class Core {
         List<Course> SectionList = new ArrayList<Course>();
         OfferingToObject(Offering, SectionList);
         // checking method worked
-        System.out.println();
-        Section lmao = (Section) SectionList.get(71);
-        System.out.println("-------------------------------------------");
+        Section lmao = (Section) SectionList.get(51);
         System.out.println(lmao.getCourseName());
-        System.out.println(lmao.getCreditHours());
-
-        System.out.println(lmao.getCorequisite());
         System.out.println(lmao.getPrerequisite());
+        Student mirage = new Student(FinishedCourses);
+        System.out.println(mirage.getFinishedCourses());
+        System.out.println(mirage.getNeededCourses());
+        mirage.AvailableCourses();
+        System.out.println("L");
+        System.out.println(lmao.getPrerequisite());
+        System.out.println(lmao.getPrerequisiteCourse()); // list of courses
+        System.out.println(lmao.getPrerequisiteCourse().contains(new Course("ICS104"))); // list of courses contain ics104 course
+        System.out.println(mirage.getSectionList().size());
+        //mirage.AvailableCourses();
+        //System.out.println(mirage.getAvailableCourses());
 
         //
 

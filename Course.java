@@ -6,6 +6,8 @@ public class Course {
     private String CourseName;
     private List<String> Prerequisite = new ArrayList<>();
     private List<String> Corequisite = new ArrayList<>();
+    private List<Course> corequisiteCourse;
+    private List<Course> prerequisiteCourse;
     private int CreditHours;
     private String Grade;
     //static int SectionCount = 0;
@@ -24,19 +26,19 @@ public class Course {
         // using the course name we create a list of prerequisite and corequisites
     }
 
+    // rework this
     public void getStudentPlan(File stuPlan, String Coursename){
         try{
             Scanner readFile = new Scanner(stuPlan);
-            readFile.nextLine(); // the header
             String current = readFile.nextLine();
-            System.out.println(current);
             while(readFile.hasNext()){
                 String[] info = current.split(","); // we can create Course classes from this...
-                System.out.println(Arrays.toString(info));
                 if (info[0].equals(Coursename)) {
                     String[] PrerequisiteArr = info[2].split(";");
                     String[] CorequisiteArr =  info[3].split(";");
-                    //System.out.println(Arrays.toString(PrerequisiteArr));
+                    this.corequisiteCourse = ArraytoCourse(CorequisiteArr);
+                    this.prerequisiteCourse = ArraytoCourse(PrerequisiteArr);
+                    // ICS108 ICS 108 use strip!!!
                     this.Prerequisite.addAll(Arrays.asList(PrerequisiteArr));
                     this.Corequisite.addAll(Arrays.asList(CorequisiteArr));
                     this.CreditHours = Integer.parseInt(info[1]);
@@ -49,7 +51,15 @@ public class Course {
         }
 
     }
+    public List<Course> ArraytoCourse(String[] list){
+        List<Course> result = new ArrayList<>();
+        for(int i = 0; i < list.length; i++){
+            if(!(list[i].equals("None")))
+                result.add(new Course(list[i].replaceAll(" ", "")));
 
+        }
+        return result;
+    }
     public List<String> getPrerequisite() {
         return Prerequisite;
     }
@@ -71,8 +81,16 @@ public class Course {
     public String getGrade() {
         return Grade;
     }
-public String toString() {
-    
-    return "Course name is "+ CourseName+" The Prerequisite is "+Prerequisite+" the Corequisite is "+Corequisite+" the credit hours is "+CreditHours;
-}
+//    public String toString() {
+//
+//        //return //"Course name is "+ CourseName+" The Prerequisite is "+Prerequisite+" the Corequisite is "+Corequisite+" the credit hours is "+CreditHours;
+//    }
+
+    public List<Course> getCorequisiteCourse() {
+        return corequisiteCourse;
+    }
+
+    public List<Course> getPrerequisiteCourse() {
+        return prerequisiteCourse;
+    }
 }
