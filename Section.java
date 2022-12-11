@@ -17,17 +17,14 @@ public class Section extends Course{
         super(courseName);
         this.SectionNumber = Secnum;
         this.Activity = Activity; // either lec or lab
-        System.out.println(Activity);
         this.CRN = CRN; // for student registration
         this.courseDesc = CourseNamex;
         this.Instructor = Instructorname; // name for the instructor
         this.Day = Day; // UMTRT
-        System.out.println(Day);
         this.Location = Location;
         this.time = time; // class time
         this.Status = Status;
         this.waitList = waitList;
-        System.out.println(this.waitList);
 
     }
     // can be handy for abdullah in the Schedule class.
@@ -68,9 +65,8 @@ public class Section extends Course{
     public String getWaitList() {
         return waitList;
     }
-     public String toString() {
-         
-          return super.toString()+" the instructor is : "+Instructor+" this crn is: "+CRN+" section number is: "+SectionNumber+" the activity is: "+Activity+" the day is: "+Day+" the time is "+time+" the location is: "+Location+" the status is: "+Status+" waitlist condition is: "+waitList;
-        }
-    
+    public String toString() {
+
+        return super.toString()+" the instructor is : "+Instructor+" this crn is: "+CRN+" section number is: "+SectionNumber+" the activity is: "+Activity+" the day is: "+Day+" the time is "+time+" the location is: "+Location+" the status is: "+Status+" waitlist condition is: "+waitList;
+    }
 }
