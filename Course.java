@@ -71,5 +71,8 @@ public class Course {
     public String getGrade() {
         return Grade;
     }
-
+public String toString() {
+    
+    return "Course name is "+ CourseName+" The Prerequisite is "+Prerequisite+" the Corequisite is "+Corequisite+" the credit hours is "+CreditHours;
+}
 }
