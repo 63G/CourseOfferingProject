@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
+import java.text.Format;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,53 +10,76 @@ import java.util.Scanner;
 public class Student {
     private List<Course> finishedCourses = new ArrayList<>();
     private List<Course> NeededCourses = new ArrayList<>();
-    private List<Section> AvailableSections = new ArrayList<>();
+    static List<Course> AvailableCourses = new ArrayList<>();
+    private List<Course> SectionList = new ArrayList<Course>();
 
-   public Student(File FinishedCourses) {
+    public Student(File FinishedCourses, File offering) {
         getFinishedCourses(FinishedCourses, finishedCourses);
-        getStudentPlan(new File("DegreePlan.csv"));
-        File Offering = new File("CourseOffering.csv");
-        OfferingToObject(Offering, SectionList);
+        fillNeededCourses(offering);
+
         AvailableCourses(AvailableCourses);
 
     }
-    public void AvailableCourses(List<Course> AvailableCourses){
-        for (int i = 0; i < Core.SectionList.size(); i++) {
-            if (!(Core.SectionList.get(i).getPrerequisiteCourse()==null)) {
-                
 
-            
-            boolean condition = Core.SectionList.get(i).getPrerequisiteCourse().contains(finishedCourses.get(0));  
-            if (!condition){
-                AvailableCourses.add(Core.SectionList.get(i));
-                
-            }}
-        }
-        }
-    public void getStudentPlan(File stuPlan){
-        try{
-            Scanner readFile = new Scanner(stuPlan);
-            readFile.nextLine(); // the header
-            String current = readFile.nextLine();
-            while(readFile.hasNext()){
-                String[] info = current.split(","); // we can create Course classes from this...
-                this.NeededCourses.add(new Course(info[0]));
-                current = readFile.nextLine();
+    public void AvailableCourses(List<Course> AvailableCourses) {
+        // ! Add only courses that he should register
+        List<Course> allCourses = Core.SectionList;
+
+        for (int i = 0; i < allCourses.size(); i++) {
+
+            List<Course> pre = allCourses.get(i).getPrerequisiteCourse();
+
+            for (int j = 0; j < NeededCourses.size(); j++) {
+
+                if (Core.formatName(allCourses.get(i).getCourseName()).equals(NeededCourses.get(j).getCourseName())
+                        && pre.isEmpty()) {
+                    // ! check if the course is in plan but dosen't have prerequisit
+                    AvailableCourses.add(allCourses.get(i));
+                }
             }
-        } catch (FileNotFoundException e) {
-            System.out.println("File isn't found");
+
+            for (int j = 0; j < pre.size(); j++) {
+                for (int j2 = 0; j2 < finishedCourses.size(); j2++) {
+                    // ! check if the student finished the prerequisit
+                    if (finishedCourses.get(j2).getCourseName().equals(pre.get(j).getCourseName())) {
+                        AvailableCourses.add(allCourses.get(i));
+
+                    }
+                }
+            }
+
+        }
+        System.out.println(AvailableCourses);
+    }
+
+    public void fillNeededCourses(File F32) { // ! method to add the courses that he should register
+        try {
+            Scanner input = new Scanner(F32);
+            input.nextLine();
+            String line;
+            while (input.hasNext()) {
+                line = input.nextLine();
+
+                String[] SectionInfo = line.split(",");
+                NeededCourses.add(new Course(Core.formatName(SectionInfo[0].split("-")[0])));
+
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
-    public static void getFinishedCourses(File FinishedCourses, List<Course> list){
+
+    public static void getFinishedCourses(File FinishedCourses, List<Course> list) {
         try {
             Scanner input = new Scanner(FinishedCourses);
             String line;
-            while(input.hasNext()){
+            while (input.hasNext()) {
                 line = input.nextLine();
                 String[] SectionInfo = line.split(",");
-                String CourseName = SectionInfo[0];
+                String CourseName = Core.formatName(SectionInfo[0]);
+
                 String Grade = SectionInfo[2];
-                //list.add(new Course(CourseName,Grade));
+                list.add(new Course(CourseName));
             }
             System.out.println("DONE");
             input.close();
@@ -65,6 +89,10 @@ public class Student {
         }
     }
 
+    public List<Course> getSectionList() {
+        return SectionList;
+    }
+
     public List<Course> getFinishedCourses() {
         return finishedCourses;
     }
@@ -72,4 +100,9 @@ public class Student {
     public List<Course> getNeededCourses() {
         return NeededCourses;
     }
+
+    public List<Course> getAvailableCourses() {
+        return AvailableCourses;
+    }
+
 }
