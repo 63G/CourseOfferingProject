@@ -62,10 +62,10 @@ public class Course {
             String line;
             while (input.hasNext()) {
                 line = input.nextLine();
-                // System.out.println(line);
                 String[] SectionInfo = line.split(",");
                 // System.out.println(Core.formatName(courseName) + "---" +
                 // Core.formatName(SectionInfo[0]));
+                
                 if (Core.formatName(SectionInfo[0]).equals(Core.formatName(courseName))) {
                     // Pre
                     {
@@ -79,6 +79,7 @@ public class Course {
 
                     }
                     // Co
+                    
                     {
                         String co = Core.formatName(SectionInfo[3]);
                         if (co.equals("None"))

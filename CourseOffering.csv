@@ -24,25 +24,6 @@ ACCT508-01,LEC,23419,Financial Accounting,Y FALLATAH,UT,1845-2000,24-151,Open,Cl
 ACCT508-02,LEC,24267,Financial Accounting,Y FALLATAH,UT,2010-2125,24-149,Open,Closed
 ACCT510-01,LEC,21984,Managerial Accounting,HAIDER MADANI,MW,1845-2000,24-236A,Closed,Closed
 ACCT510-02,LEC,23547,Managerial Accounting,HAIDER MADANI,MW,2010-2125,24-236A,Closed,Closed
-ECON101-01,LEC,20203,Principles Of Microeconomics,MUHAMMAD CHAUDHRY,UT,1230-1345,24-125,Open,Closed
-ECON101-02,LEC,20204,Principles Of Microeconomics,MUHAMMAD CHAUDHRY,UT,1400-1515,24-180,Open,Closed
-ECON101-03,LEC,20205,Principles Of Microeconomics,HUSSAIN AL SHAMMASI,MW,0930-1045,24-180,Closed,Open
-ECON102-01,LEC,21097,Principles of Macroeconomics,FAZLUL MIAH,MW,0930-1045,24-249,Open,Closed
-ECON102-02,LEC,21098,Principles of Macroeconomics,FAZLUL MIAH,MW,1230-1345,24-115,Closed,Open
-ECON102-03,LEC,21099,Principles of Macroeconomics,MOHAMMAD AKIMAYA,UT,1530-1645,24-137,Closed,Closed
-ECON102-F04,LEC,21687,Principles of Macroeconomics,None,UT,1230-1345,7-119,Open,Closed
-ECON301-01,LEC,23421,Intermediate Microeconomic Theory,HUSSAIN AL SHAMMASI,MW,1100-1215,24-180,Open,Closed
-ECON305-01,LEC,24268,Money & Banking,FAZLUL MIAH,MW,1100-1215,24-240,Closed,Open
-ECON306-01,LEC,22517,Economy of Saudi Arabia,IBRAHIM ALGAHTANI,UT,1100-1215,24-180,Closed,Closed
-ECON306-02,LEC,22518,Economy of Saudi Arabia,IBRAHIM ALGAHTANI,UT,1230-1345,24-156,Closed,Open
-ECON306-03,LEC,22519,Economy of Saudi Arabia,IBRAHIM ALGAHTANI,UT,1400-1515,24-174,Closed,Open
-ECON306-04,LEC,24269,Economy of Saudi Arabia,ABDULLAH ِALMEER,UT,1100-1215,24-236A,Open,Closed
-ECON306-05,LEC,24270,Economy of Saudi Arabia,ABDULLAH ِALMEER,UT,1230-1345,24-236A,Open,Closed
-ECON306-06,LEC,24271,Economy of Saudi Arabia,ABDULLAH ِALMEER,UT,1400-1515,24-236A,Open,Closed
-ECON401-01,LEC,23772,Managerial Economics,MEHMET SOYTAS,UT,1530-1645,24-149,Open,Closed
-ECON510-01,LEC,20207,Managerial Economics,MEHMET SOYTAS,UT,1720-1835,24-156,Open,Closed
-ECON520-01,LEC,24272,Microeconomic Analysis,MUHAMMAD CHAUDHRY,UT,1720-1835,24-158,Open,Closed
-ECON575-01,LEC,22897,"Energy Markets, Policies and Regulations",MOHAMMAD AKIMAYA,UT,2010-2125,24-156,Closed,Closed
 FIN 250-01,LEC,21100,Financial Management,HESHAM MERDAD,UT,1400-1515,24-240,Closed,Open
 FIN 250-02,LEC,21101,Financial Management,MANSOUR AL-SAHLAWI,UT,1230-1345,24-240,Open,Closed
 FIN 250-03,LEC,21102,Financial Management,MANSOUR AL-SAHLAWI,MW,0930-1045,24-250,Open,Closed
@@ -508,61 +489,15 @@ CHEM202-53,LAB,23429,Organic Chemistry Laboratory,None,M,1300-1700,75-205,Open,C
 CHEM202-54,LAB,23430,Organic Chemistry Laboratory,None,M,1300-1700,75-207,Closed,Closed
 CHEM202-56,LAB,23432,Organic Chemistry Laboratory,None,W,0800-1150,75-205,Closed,Closed
 CHEM202-57,LAB,23433,Organic Chemistry Laboratory,None,W,1300-1700,75-205,Closed,Closed
-CHEM202-58,LAB,23434,Organic Chemistry Laboratory,None,W,1300-1700,75-207,Closed,Closed
+CHEM202-58,LAB,23434,Organic Chemistry Laboratory,None,W,1300-1700,75-207,Closed,Closed  
 CHEM202-59,LAB,24469,Organic Chemistry Laboratory,None,W,0800-1150,75-207,Open,Closed
 CHEM202-60,LAB,24512,Organic Chemistry Laboratory,None,M,0800-1150,75-207,Open,Closed
 CHEM204-01,LEC,21530,Organic Chemistry II,None,UTR,0800-0850,63-224,Open,Closed
 CHEM212-01,LEC,23049,Physical Chemistry I: Chemical Thermodynamics,None,UTR,1100-1150,3-114,Open,Closed
 CHEM213-01,LAB,23437,Chemical Thermodynamics Lab,None,T,1300-1700,75-209,Open,Closed
-CHEM305-51,LAB,22503,Organic Synthesis & Characterization Laboratory,None,UT,1300-1700,None,Open,Closed
-CHEM311-01,LEC,23041,Physical Chemistry II: Kinetics and Spectroscopy,None,UTR,0800-0850,63-225,Open,Closed
-CHEM311-02,LEC,23438,Physical Chemistry II: Kinetics and Spectroscopy,None,UTR,0900-0950,63-127,Closed,Closed
-CHEM311-03,LEC,23042,Physical Chemistry II: Kinetics and Spectroscopy,None,UTR,1000-1050,63-129,Open,Closed
-CHEM311-04,LEC,24259,Physical Chemistry II: Kinetics and Spectroscopy,None,UTR,1000-1050,63-037,Closed,Closed
-CHEM311-05,LEC,24497,Physical Chemistry II: Kinetics and Spectroscopy,None,UTR,1200-1250,63-024,Open,Closed
-CHEM312-51,LAB,23439,Kinetics and Spectroscopy Laboratory,None,U,1300-1700,75-209,Open,Closed
-CHEM312-52,LAB,23440,Kinetics and Spectroscopy Laboratory,None,U,1300-1700,75-226,Open,Closed
-CHEM312-53,LAB,23441,Kinetics and Spectroscopy Laboratory,None,M,0800-1150,75-209,Closed,Closed
-CHEM312-54,LAB,23442,Kinetics and Spectroscopy Laboratory,None,M,1300-1700,75-209,Closed,Closed
-CHEM312-55,LAB,23443,Kinetics and Spectroscopy Laboratory,None,M,1300-1700,75-226,Closed,Closed
-CHEM312-56,LAB,23444,Kinetics and Spectroscopy Laboratory,None,T,1300-1700,None,Closed,Closed
-CHEM312-57,LAB,23445,Kinetics and Spectroscopy Laboratory,None,T,1300-1700,75-226,Closed,Closed
-CHEM312-58,LAB,23446,Kinetics and Spectroscopy Laboratory,None,W,1300-1700,75-209,Closed,Closed
-CHEM312-59,LAB,23447,Kinetics and Spectroscopy Laboratory,None,W,1300-1700,75-226,Closed,Closed
-CHEM312-60,LAB,24496,Kinetics and Spectroscopy Laboratory,None,W,0800-1150,None,Closed,Closed
-CHEM321-01,LEC,22012,Instrumental Analysis for Engineers,None,UT,1200-1250,63-022,Open,Closed
-CHEM321-53,LAB,22017,Instrumental Analysis for Engineers,None,M,1300-1700,75-234,Open,Closed
-CHEM321-56,LAB,22020,Instrumental Analysis for Engineers,None,W,1300-1700,75-234,Open,Closed
-CHEM321-57,LAB,24580,Instrumental Analysis for Engineers,None,U,1300-1700,75-234,Open,Closed
-CHEM336-01,LEC,24260,Advanced  Inorganic  Chemistry,None,MW,1000-1050,63-033,Open,Closed
-CHEM337-51,LAB,24261,Inorganic Syn & Charac Lab,None,M,1300-1650,75-310,Open,Closed
-CHEM363-01,LEC,21531,Biochemistry,None,UTR,0900-0950,63-135,Open,Closed
-CHEM388-01,RES,21717,Chemistry Research I,None,None,None,None,Open,Closed
-CHEM416-01,LEC,24513,Photochemistry,None,UTR,0800-0850,63-035,Open,Closed
-CHEM451-01,LEC,24366,Polymer Chemistry,None,UTR,1000-1050,6-101,Open,Closed
-CHEM457-01,LEC,24398,Polymer Characterization & Ana,None,MW,1430-1545,63-033,Closed,Closed
-CHEM479-01,SEM,20180,Chemistry Seminar,None,None,None,None,Open,Closed
-CHEM488-01,RES,21718,Undergraduate Research,None,None,None,None,Open,Closed
-CHEM502-01,LEC,22505,Chemistry of Coordination Compounds,None,UT,1720-1835,63-022,Closed,Open
-CHEM502-F02,LEC,24262,Chemistry of Coordination Compounds,None,MW,1720-1835,59-1007,Closed,Closed
-CHEM503-01,LEC,22506,Organic Reactions: Mech.& Reac,None,MW,1720-1835,63-026,Closed,Open
-CHEM503-F02,LEC,24263,Organic Reactions: Mech.& Reac,None,UT,1720-1835,59-2004,Closed,Closed
 CHEM532-01,LEC,24362,Synthetic Organic Chemistry,None,UT,1845-2000,63-032,Open,Closed
 CHEM533-01,LEC,24363,Nuclear Mag Resonance Spectros,None,MW,1845-2000,63-036,Open,Closed
 CHEM537-01,LEC,24476,Polymer Synthesis,None,UT,1845-2000,59-1016,Closed,Closed
-CHEM590-01,LEC,24455,SpTopics in Physical Chemistry,None,UT,2010-2125,63-022,Open,Closed
-CHEM599-01,SEM,23848,Graduate (M.S.) Seminar,None,None,None,None,Open,Closed
-CHEM606-01,RES,23686,Independent Research,None,None,None,None,Open,Closed
-CHEM610-01,THS,20181,M.S. Thesis,None,None,None,None,Open,Closed
-CHEM617-01,LEC,23540,Chemistry and Physics of Nanomaterials,None,MW,2010-2125,63-022,Open,Closed
-CHEM619-01,PRJ,22895,Project,None,None,None,None,Closed,Closed
-CHEM630-01,LEC,24264,Phys Chem/Character Polymers,None,MW,1845-2000,59-1011,Closed,Closed
-CHEM642-01,LEC,24364,Chemometrics,None,UT,1845-2000,63-037,Open,Closed
-CHEM699-01,SEM,20920,Graduate (Ph.D.) Seminar,None,None,None,None,Open,Closed
-CHEM701-01,RES,24454,Directed Research I,None,None,None,None,Open,Closed
-CHEM702-01,RES,20901,Directed Research II,None,None,None,None,Open,Closed
-CHEM711-01,DIS,21137,PhD. Pre-Dissertation,None,None,None,None,Open,Closed
-CHEM712-01,DIS,21757,PhD. Dissertation,None,None,None,None,Open,Closed
 CIE 204-01,LEC,20601,Digital Systems Design,SIDDIG ELNAIEM,MW,1000-1050,24-165,Open,Closed
 CIE 204-52,LAB,21214,Digital Systems Design,SIDDIG ELNAIEM,W,1400-1640,22-421,Open,Closed
 CIE 301-01,LEC,21726,Numerical Methods,AMRAN AL-AGHBARI,UT,1100-1215,22-130,Open,Closed

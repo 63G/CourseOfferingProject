@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Core {
-    static List<Course> SectionList = new ArrayList<Course>();
+    static List<Section> SectionList = new ArrayList<Section>();
 
     public static void main(String[] args) {
         File Offering = new File("CourseOffering.csv");
@@ -15,10 +15,12 @@ public class Core {
         OfferingToObject(Offering, SectionList);
 
         Student a = new Student(FinishedCourses, new File("DegreePlan.csv"));
+        Schedule.conflict(a.getAvailableCourses().get(10), a.getAvailableCourses().get(15));
+
     }
 
     // i'll try to make this method general for all files.
-    public static void OfferingToObject(File fileToRead, List<Course> list) {
+    public static List<Section> OfferingToObject(File fileToRead, List<Section> list) {
         try {
             Scanner input = new Scanner(fileToRead);
             input.nextLine(); // this is just a header
@@ -34,6 +36,7 @@ public class Core {
             }
             System.out.println("DONE, We have sectiob objects");
             input.close();
+            return list;
         } catch (FileNotFoundException e) {
             System.out.println("File Isn't found!");
             throw new RuntimeException(e);
@@ -51,6 +54,11 @@ public class Core {
         }
 
         return name;
+    }
+
+    public static List<Section> getSecList(){
+        File Offering = new File("CourseOffering.csv");
+        return OfferingToObject(Offering, SectionList);
     }
 
 }

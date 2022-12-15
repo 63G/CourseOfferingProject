@@ -23,7 +23,7 @@ public class Student {
 
     public void AvailableCourses(List<Course> AvailableCourses) {
         // ! Add only courses that he should register
-        List<Course> allCourses = Core.SectionList;
+        List<Section> allCourses = Core.SectionList;
 
         for (int i = 0; i < allCourses.size(); i++) {
 
@@ -32,7 +32,7 @@ public class Student {
             for (int j = 0; j < NeededCourses.size(); j++) {
 
                 if (Core.formatName(allCourses.get(i).getCourseName()).equals(NeededCourses.get(j).getCourseName())
-                        && pre.isEmpty()) {
+                        && pre.isEmpty() && !IsFinished(allCourses.get(i))) {
                     // ! check if the course is in plan but dosen't have prerequisit
                     AvailableCourses.add(allCourses.get(i));
                 }
@@ -41,7 +41,8 @@ public class Student {
             for (int j = 0; j < pre.size(); j++) {
                 for (int j2 = 0; j2 < finishedCourses.size(); j2++) {
                     // ! check if the student finished the prerequisit
-                    if (finishedCourses.get(j2).getCourseName().equals(pre.get(j).getCourseName())) {
+                    if (finishedCourses.get(j2).getCourseName().equals(pre.get(j).getCourseName())
+                            && !IsFinished(allCourses.get(i))) {
                         AvailableCourses.add(allCourses.get(i));
 
                     }
@@ -87,6 +88,17 @@ public class Student {
             System.out.println("File Isn't found!");
             throw new RuntimeException(e);
         }
+    }
+
+    public boolean IsFinished(Course a) {
+        boolean Flag = false;
+        for (int i = 0; i < finishedCourses.size(); i++) {
+            if (a.getCourseName().equals(finishedCourses.get(i).getCourseName())) {
+                Flag = true;
+            }
+
+        }
+        return Flag;
     }
 
     public List<Course> getSectionList() {
