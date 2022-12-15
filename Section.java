@@ -71,13 +71,13 @@ public class Section extends Course {
     }
 
     public String toString() {
-
-        return "Course name is: " + super.getCourseName() + " the instructor is : " + Instructor + " this crn is: "
+        String c = "Course name is: " + super.getCourseName() + " the instructor is : " + Instructor + " this crn is: "
                 + CRN
-                + " section number is: "
-                + SectionNumber + " the activity is: " + Activity + " the day is: " + Day + " the time is " + time
+                + " section number is: " + SectionNumber + " Course Desc : " + courseDesc + ' '
+                + " the activity is: " + Activity + " the day is: " + Day + " the time is " + time
                 + " the location is: " + Location + " the status is: " + Status + " waitlist condition is: " + waitList
                 + "\n";
+        return c;
 
     }
 }
