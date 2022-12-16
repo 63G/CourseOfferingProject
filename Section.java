@@ -34,10 +34,12 @@ public class Section extends Course {
         this.Status = Status;
         this.waitList = waitList;
         this.removeButton = new Button("REMOVE");
+        this.removeButton.setId("remove-btn");
         this.removeButton.setScaleX(0);
         this.removeButton.setOnAction(e -> remover());
 
         this.addButton = new Button("ADD");
+        this.addButton.setId("add-btn");
         this.addButton.setOnAction(e -> adder());
 
     }
@@ -154,7 +156,8 @@ public class Section extends Course {
     public static ArrayList<String> strArray() {
         ArrayList<String> a = new ArrayList<>();
         for (int i = 0; i < cart.size(); i++) {
-            a.add(cart.get(i).getCourseName());
+            a.add(cart.get(i).getCourseName() + "\t" + ((Section) (cart.get(i))).getDay()
+                    + "\t\t" + ((Section) (cart.get(i))).getTime());
         }
         return a;
     }

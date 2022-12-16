@@ -16,7 +16,7 @@
    <children>
       <VBox prefHeight="616.0" prefWidth="818.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefWidth="889.0">
+            <HBox fx:id="header" prefWidth="889.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Sections to Basket">
                      <HBox.margin>

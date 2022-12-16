@@ -1,0 +1,31 @@
+#add-btn  , #remove-btn {
+    -fx-padding: 5px 20px;
+    -fx-cursor: pointer;
+    -fx-display: block;
+    -fx-border: none;
+    -fx-outline: none;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold; 
+    -fx-white-space: nowrap;
+    -fx-overflow: visible;
+}
+#add-btn  {
+    -fx-background-color: rgb(49, 153, 49);
+
+} 
+#remove-btn  {
+    -fx-background-color: rgb(185, 0, 0);
+    
+
+}
+
+#add-btn:hover {
+}
+
+#add , #remove {
+    -fx-alignment:CENTER;
+}
+#header {
+    
+    -fx-background: linear-gradient(45deg , red , yellow);
+}

@@ -40,6 +40,9 @@ public class MyJavaFX extends Application {
     try {
       Parent root = FXMLLoader.load(getClass().getResource("BasketSceneController.fxml"));
       Scene scene = new Scene(root);
+      // scene.getStylesheets().add(getClass().getResource("main.css").toExternalForm());
+      String css = this.getClass().getResource("main.css").toExternalForm();
+      scene.getStylesheets().add(css);
 
       Image img = new Image("شعار الجامعة.png");
       stage.getIcons().add(img);
