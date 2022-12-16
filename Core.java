@@ -17,6 +17,7 @@ public class Core {
         Student a = new Student(FinishedCourses, new File("DegreePlan.csv"));
         Schedule.conflict(a.getAvailableCourses().get(10), a.getAvailableCourses().get(15));
 
+        MyJavaFX.main(args);
     }
 
     // i'll try to make this method general for all files.

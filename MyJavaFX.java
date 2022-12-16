@@ -30,8 +30,8 @@ import javafx.scene.image.ImageView;
 
 
 public class MyJavaFX extends Application {
-  private final int STAGE_WIDTH = 800;
-  private final int STAGE_HEIGHT = 350;
+  private final int STAGE_WIDTH = 1200;
+  private final int STAGE_HEIGHT = 800;
   private final String BUTTON_FONT = "Verdana";
   private final double BUTTON_FONT_SIZE = 12;
 
@@ -41,7 +41,7 @@ public class MyJavaFX extends Application {
     //Stage stage = new Stage();  //you can add a stage if you want
     try {
       Parent root = FXMLLoader.load(getClass().getResource("BasketSceneController.fxml"));
-      Scene scene = new Scene(root);
+      Scene scene = new Scene(root, STAGE_WIDTH, STAGE_HEIGHT);
       
 
 
@@ -51,6 +51,8 @@ public class MyJavaFX extends Application {
       stage.getIcons().add(img);
       stage.setTitle("Available Courses Next Semester");
       stage.setScene(scene);
+      // stage.setFullScreen(true);
+      stage.setResizable(false);
       stage.show();
     } catch (IOException e) {
       // TODO Auto-generated catch block

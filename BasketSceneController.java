@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,15 +27,17 @@ public class BasketSceneController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private List<Section> secList = Core.getSecList();
+    private List<Course> secList = Student.AvailableCourses;
 
     public void switchToScheduleScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ScheduleSceneController.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(root, 1200, 800);
 
         stage.setTitle("Schedule Planner");
         stage.setScene(scene);
+        // stage.setFullScreen(true);
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -46,9 +49,6 @@ public class BasketSceneController implements Initializable {
 
     @FXML
     private TableColumn<Section, String> Activity;
-
-    // @FXML // todo don't forget uncomment
-    // private TableColumn<?, ?> AddRemove;
 
     @FXML
     private TableColumn<Section, Integer> CRN;
@@ -67,6 +67,12 @@ public class BasketSceneController implements Initializable {
 
     @FXML
     private Button Next;
+
+    @FXML
+    private TableColumn<Section, Button> add;
+
+    @FXML
+    private TableColumn<Section, Button> remove;
 
     @FXML
     private Button SavedSchedule;
@@ -93,44 +99,6 @@ public class BasketSceneController implements Initializable {
 
     }
 
-    // (Section) Student.getAvailableCourses()
-    // Section secList = (Section) Student.getAvailableCourses();
-    // ArrayList<Section> secList = (ArrayList<Section>)
-    // Student.getAvailableCourses();
-    // ObservableList<Course> list = FXCollections.observableArrayList(
-    // new Course("IAS111")
-    // );
-
-    // @FXML
-    // void initialize() {
-    // assert Activity != null : "fx:id=\"Activity\" was not injected: check your
-    // FXML file 'MainFrame.fxml'.";
-    // assert AddRemove != null : "fx:id=\"AddRemove\" was not injected: check your
-    // FXML file 'MainFrame.fxml'.";
-    // assert CRN != null : "fx:id=\"CRN\" was not injected: check your FXML file
-    // 'MainFrame.fxml'.";
-    // assert CourseName != null : "fx:id=\"CourseName\" was not injected: check
-    // your FXML file 'MainFrame.fxml'.";
-    // assert CourseSec != null : "fx:id=\"CourseSec\" was not injected: check your
-    // FXML file 'MainFrame.fxml'.";
-    // assert Day != null : "fx:id=\"Day\" was not injected: check your FXML file
-    // 'MainFrame.fxml'.";
-    // assert Instructor != null : "fx:id=\"Instructor\" was not injected: check
-    // your FXML file 'MainFrame.fxml'.";
-    // assert Next != null : "fx:id=\"Next\" was not injected: check your FXML file
-    // 'MainFrame.fxml'.";
-    // assert SavedSchedule != null : "fx:id=\"SavedSchedule\" was not injected:
-    // check your FXML file 'MainFrame.fxml'.";
-    // assert Status != null : "fx:id=\"Status\" was not injected: check your FXML
-    // file 'MainFrame.fxml'.";
-    // assert Time != null : "fx:id=\"Time\" was not injected: check your FXML file
-    // 'MainFrame.fxml'.";
-    // assert WaitList != null : "fx:id=\"WaitList\" was not injected: check your
-    // FXML file 'MainFrame.fxml'.";
-    // assert table != null : "fx:id=\"table\" was not injected: check your FXML
-    // file 'MainFrame.fxml'.";
-    // }
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // System.out.println(CRN);
@@ -144,14 +112,45 @@ public class BasketSceneController implements Initializable {
         Time.setCellValueFactory(new PropertyValueFactory<Section, String>("time"));
         Status.setCellValueFactory(new PropertyValueFactory<Section, String>("Status"));
         WaitList.setCellValueFactory(new PropertyValueFactory<Section, String>("waitList"));
+        
+
+        
         setUpTable();
+        
     } 
 
     private void setUpTable() {
+        
+        
         for (int i = 0; i < secList.size(); i++) {
-            Section a = secList.get(i);
-            System.out.println(a);
-            table.getItems().add(a);
+            Course a = secList.get(i);
+
+            add.setCellFactory(parm -> {
+                Button button = new Button("ADD");
+                button.setOnAction(event -> {
+                    // handle the button click event
+                    System.out.println("add -" + a.getCourseName());
+                });
+                TableCell<Section, Button> cell = new TableCell<>();
+                cell.setGraphic(button);
+                return cell;
+            });
+            remove.setCellFactory(parm -> {
+                Button button = new Button("REMOVE");
+                button.setOnAction(event -> {
+                    // handle the button click event
+                    System.out.println("remove -" + a.getCourseName());
+                });
+                TableCell<Section, Button> cell = new TableCell<>();
+                cell.setGraphic(button);
+                return cell;
+            });
+
+            table.getItems().add((Section)a);
+            table.getColumns().add(add);
+            table.getColumns().add(remove);
+            
+            
         }
     }
 

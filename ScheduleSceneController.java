@@ -25,10 +25,12 @@ public class ScheduleSceneController implements Initializable {
     public void switchToBasketScene(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("BasketSceneController.fxml"));
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(root, 1200, 800);
 
         stage.setTitle("Available Courses Next Semester");
         stage.setScene(scene);
+        // stage.setFullScreen(true);
+        stage.setResizable(false);
         stage.show();
     }
 

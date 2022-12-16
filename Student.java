@@ -50,7 +50,7 @@ public class Student {
             }
 
         }
-        System.out.println(AvailableCourses);
+        // System.out.println(AvailableCourses);
     }
 
     public void fillNeededCourses(File F32) { // ! method to add the courses that he should register
