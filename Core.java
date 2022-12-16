@@ -15,9 +15,10 @@ public class Core {
         OfferingToObject(Offering, SectionList);
 
         Student a = new Student(FinishedCourses, new File("DegreePlan.csv"));
-        Schedule.conflict(a.getAvailableCourses().get(10), a.getAvailableCourses().get(15));
-
-        MyJavaFX.main(args);
+        Schedule.conflict(a.getAvailableCourses().get(0), a.getAvailableCourses().get(15));
+        ScheduleSceneController.addded.add(new Course("hi"));
+        ScheduleSceneController.addded.add(new Course("bay"));
+        // MyJavaFX.main(args);
     }
 
     // i'll try to make this method general for all files.
@@ -57,7 +58,7 @@ public class Core {
         return name;
     }
 
-    public static List<Section> getSecList(){
+    public static List<Section> getSecList() {
         File Offering = new File("CourseOffering.csv");
         return OfferingToObject(Offering, SectionList);
     }

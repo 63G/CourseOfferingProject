@@ -4,6 +4,11 @@ import java.util.*;
 
 import javax.security.auth.Subject;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
+
 public class Course {
     private String courseName;
     File Plan = new File("DegreePlan.csv");
@@ -13,7 +18,7 @@ public class Course {
     private ArrayList<Course> prerequisiteCourse = new ArrayList<>();
     private int creditHours;
     private String grade;
-    // static int SectionCount = 0;
+
     private boolean hasALab; // todo Use this to insert a lab to the course
 
     Course(String courseName) {
@@ -21,6 +26,10 @@ public class Course {
         this.getStudentPlanDH7(Plan, courseName);
 
         // using the course name we create a list of prerequisite and corequisites
+    }
+
+    Course(String courseName, Button button) {
+        System.out.println("hi");
     }
 
     // rework this
@@ -65,7 +74,7 @@ public class Course {
                 String[] SectionInfo = line.split(",");
                 // System.out.println(Core.formatName(courseName) + "---" +
                 // Core.formatName(SectionInfo[0]));
-                
+
                 if (Core.formatName(SectionInfo[0]).equals(Core.formatName(courseName))) {
                     // Pre
                     {
@@ -79,7 +88,7 @@ public class Course {
 
                     }
                     // Co
-                    
+
                     {
                         String co = Core.formatName(SectionInfo[3]);
                         if (co.equals("None"))
@@ -153,4 +162,18 @@ public class Course {
         return this.prerequisiteCourse;
     }
 
+    @FXML
+    public void handler(ActionEvent e) {
+        System.out.println(this.getCourseName());
+
+    }
+
+    public void btn() {
+        Button button = new Button("ADD");
+        TableCell<Section, Button> cell = new TableCell<>();
+        cell.setGraphic(button);
+        System.out.println(this.courseName);
+        button.setOnAction(this::handler);
+
+    }
 }

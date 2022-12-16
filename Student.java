@@ -43,14 +43,15 @@ public class Student {
                     // ! check if the student finished the prerequisit
                     if (finishedCourses.get(j2).getCourseName().equals(pre.get(j).getCourseName())
                             && !IsFinished(allCourses.get(i))) {
-                        AvailableCourses.add(allCourses.get(i));
-
+                        Course myCourse = allCourses.get(i);
+                        // myCourse
+                        AvailableCourses.add(myCourse);
                     }
                 }
             }
 
         }
-        // System.out.println(AvailableCourses);
+
     }
 
     public void fillNeededCourses(File F32) { // ! method to add the courses that he should register

@@ -28,42 +28,35 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
 public class MyJavaFX extends Application {
-  private final int STAGE_WIDTH = 1200;
-  private final int STAGE_HEIGHT = 800;
+  private final int STAGE_WIDTH = 800;
+  private final int STAGE_HEIGHT = 350;
   private final String BUTTON_FONT = "Verdana";
   private final double BUTTON_FONT_SIZE = 12;
 
-
   @Override // Override the start method in the Application class
   public void start(Stage stage) {
-    //Stage stage = new Stage();  //you can add a stage if you want
+    // Stage stage = new Stage(); //you can add a stage if you want
     try {
       Parent root = FXMLLoader.load(getClass().getResource("BasketSceneController.fxml"));
-      Scene scene = new Scene(root, STAGE_WIDTH, STAGE_HEIGHT);
-      
+      Scene scene = new Scene(root);
 
-
-
-      
       Image img = new Image("شعار الجامعة.png");
       stage.getIcons().add(img);
       stage.setTitle("Available Courses Next Semester");
       stage.setScene(scene);
-      // stage.setFullScreen(true);
-      stage.setResizable(false);
       stage.show();
+
     } catch (IOException e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
   }
 
   public static void main(String[] args) {
+    Core.main(null);
     launch(args);
   }
 
-  
 }
