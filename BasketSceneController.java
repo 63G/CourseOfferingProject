@@ -100,24 +100,39 @@ public class BasketSceneController implements Initializable, Serializable {
     private TableView<Section> table;
 
     @FXML
-    void OnNextClicked(ActionEvent event) {
-
+    void OnNextClicked(ActionEvent event) throws IOException {
+        // ! save sech
+        // FileOutputStream fileOutputStream = new
+        // FileOutputStream("SavedSections.dat");
+        // ObjectOutputStream obj = new ObjectOutputStream(fileOutputStream);
+        // ArrayList<Course> a = Section.getCart();
+        // System.out.println(a);
+        // obj.writeObject(a);
+        // obj.close();
     }
 
     @FXML
     void OnSavedClicked(ActionEvent event) throws IOException, ClassNotFoundException {
-        // FileInputStream fileInputStream = new FileInputStream("SavedSections.dat");
-        // ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
-        // ArrayList<Course> a = (ArrayList<Course>) objInStream.readObject();
-        // Section.setCart(a);
-        // objInStream.close();
+        // ! import sech
+        FileInputStream fileInputStream = new FileInputStream("SavedSections.dat");
+        ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
+        ArrayList<Course> a = (ArrayList<Course>) objInStream.readObject();
+        Section.setCart(a);
+        objInStream.close();
 
-        FileOutputStream fileOutputStream = new FileOutputStream("SavedSections.dat");
-        ObjectOutputStream obj = new ObjectOutputStream(fileOutputStream);
-        ArrayList<Course> a = Section.getCart();
-        System.out.println(a);
-        obj.writeObject(a);
-        obj.close();
+        for (int i = 0; i < a.size(); i++) {
+            Section courseLoaded = (Section) (secList.get(getIndex(a.get(i))));
+            courseLoaded.getAddButton().setScaleX(0);
+            courseLoaded.getRemoveButton().setScaleX(1);
+        }
+
+        // FileOutputStream fileOutputStream = new
+        // FileOutputStream("SavedSections.dat");
+        // ObjectOutputStream obj = new ObjectOutputStream(fileOutputStream);
+        // ArrayList<Course> a = Section.getCart();
+        // System.out.println(a);
+        // obj.writeObject(a);
+        // obj.close();
 
     }
 
@@ -157,4 +172,13 @@ public class BasketSceneController implements Initializable, Serializable {
         }
     }
 
+    public int getIndex(Course o) {
+        for (int i = 0; i < secList.size(); i++) {
+            if (secList.get(i).getCourseName().equals(o.getCourseName())) {
+                return i;
+            }
+
+        }
+        return -1;
+    }
 }
