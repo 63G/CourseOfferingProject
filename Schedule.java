@@ -34,5 +34,14 @@ public class Schedule {
         // * They are on same day but not conflict
         return false;
     }
+    public static boolean isRepeat(Course a, Course b){
+    if (((Section) a).getNameWithoutSec().equals(((Section) b).getNameWithoutSec())) {
+        if (((Section)a).getActivity().equals(((Section)b).getActivity())) {
+            return true;
+        }
+        return false;
+    }
+    return false;
+}
 
 }
