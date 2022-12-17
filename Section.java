@@ -1,6 +1,11 @@
+import java.util.ArrayList;
+
 import javax.swing.*;
 
+import javafx.scene.control.Button;
+
 public class Section extends Course {
+    static ArrayList<Course> cart = new ArrayList<>();
     private int CRN;
     private String time; // we will use 24 hours format
     private String Instructor;// instructor name
@@ -11,6 +16,8 @@ public class Section extends Course {
     private String Status; // either open or closed
     private String waitList; // to register in it if the status is closed.
     private String courseDesc;
+    private Button1 addButton;
+    private Button1 removeButton;
 
     Section(String courseName, String Secnum, String Activity,
             int CRN, String CourseNamex, String Instructorname, String Day, String time, String Location,
@@ -26,12 +33,54 @@ public class Section extends Course {
         this.time = time; // class time
         this.Status = Status;
         this.waitList = waitList;
+        this.removeButton = new Button1("REMOVE");
+        this.removeButton.setId("remove-btn");
+        this.removeButton.setScaleX(0);
+        this.removeButton.setOnAction(e -> remover());
+
+        this.addButton = new Button1("ADD");
+        this.addButton.setId("add-btn");
+        this.addButton.setOnAction(e -> adder());
 
     }
 
-    // can be handy for abdullah in the Schedule class.
-    public String getNameAndSection() {
-        return this.getCourseName() + "-" + this.getSectionNumber();
+    public void adder() {
+        // ! ALG.
+        ArrayList<Course> testCart = (ArrayList<Course>) cart.clone();
+        testCart.add(this);
+        while (testCart.size() > 0) {
+            Course a = testCart.get(0);
+            testCart.remove(0);
+
+            for (int i = 0; i < testCart.size(); i++) {
+                if (Schedule.conflict(a, testCart.get(i))) {
+                    System.out.println("Conflict");
+                    return;
+                }
+            }
+
+            for (int i = 0; i < testCart.size(); i++) {
+                if (Schedule.isRepeat(a, testCart.get(i))) {
+                    System.out.println("repeat");
+                    return;
+                }
+            }
+
+        }
+        cart.add(this);
+        this.removeButton.setScaleX(1);
+        this.addButton.setScaleX(0);
+    }
+
+    public void remover() {
+
+        cart.remove(this);
+        this.addButton.setScaleX(1);
+        this.removeButton.setScaleX(0);
+    }
+
+    public String getNameWithoutSec() {
+        return super.getCourseName();
     }
 
     public int getCRN() {
@@ -70,6 +119,28 @@ public class Section extends Course {
         return waitList;
     }
 
+    @Override
+    public String getCourseName() {
+        // TODO Auto-generated method stub
+        return super.getCourseName() + "-" + SectionNumber;
+    }
+
+    public String getCourseDesc() {
+        return courseDesc;
+    }
+
+    public Button getAddButton() {
+        return addButton;
+    }
+
+    public Button getRemoveButton() {
+        return removeButton;
+    }
+
+    public static ArrayList<Course> getCart() {
+        return cart;
+    }
+
     public String toString() {
         String c = "Course name is: " + super.getCourseName() + " the instructor is : " + Instructor + " this crn is: "
                 + CRN
@@ -79,5 +150,18 @@ public class Section extends Course {
                 + "\n";
         return c;
 
+    }
+
+    public static ArrayList<String> strArray() {
+        ArrayList<String> a = new ArrayList<>();
+        for (int i = 0; i < cart.size(); i++) {
+            a.add(cart.get(i).getCourseName() + "\t" + ((Section) (cart.get(i))).getDay()
+                    + "\t\t" + ((Section) (cart.get(i))).getTime());
+        }
+        return a;
+    }
+
+    public static void setCart(ArrayList<Course> a) {
+        Section.cart = a;
     }
 }

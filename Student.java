@@ -15,7 +15,7 @@ public class Student {
 
     public Student(File FinishedCourses, File offering) {
         getFinishedCourses(FinishedCourses, finishedCourses);
-        fillNeededCourses(offering);
+        fillNeededCourses(new File("DegreePlan.csv"));
 
         AvailableCourses(AvailableCourses);
 
@@ -23,7 +23,7 @@ public class Student {
 
     public void AvailableCourses(List<Course> AvailableCourses) {
         // ! Add only courses that he should register
-        List<Course> allCourses = Core.SectionList;
+        List<Section> allCourses = Core.SectionList;
 
         for (int i = 0; i < allCourses.size(); i++) {
 
@@ -43,14 +43,15 @@ public class Student {
                     // ! check if the student finished the prerequisit
                     if (finishedCourses.get(j2).getCourseName().equals(pre.get(j).getCourseName())
                             && !IsFinished(allCourses.get(i))) {
-                        AvailableCourses.add(allCourses.get(i));
-
+                        Course myCourse = allCourses.get(i);
+                        // myCourse
+                        AvailableCourses.add(myCourse);
                     }
                 }
             }
 
         }
-        System.out.println(AvailableCourses);
+
     }
 
     public void fillNeededCourses(File F32) { // ! method to add the courses that he should register
@@ -60,7 +61,6 @@ public class Student {
             String line;
             while (input.hasNext()) {
                 line = input.nextLine();
-
                 String[] SectionInfo = line.split(",");
                 NeededCourses.add(new Course(Core.formatName(SectionInfo[0].split("-")[0])));
 

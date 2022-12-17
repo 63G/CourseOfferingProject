@@ -1,31 +1,53 @@
+import java.beans.EventHandler;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import javax.swing.Action;
+
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Cell;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-public class BasketSceneController {
+public class BasketSceneController implements Initializable, Serializable {
 
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private List<Course> secList = Student.AvailableCourses;
 
-    public void switchToScheduleScene(ActionEvent event) throws IOException{
+    public void switchToScheduleScene(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("ScheduleSceneController.fxml"));
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root, 1200, 800);
 
         stage.setTitle("Schedule Planner");
         stage.setScene(scene);
+        // stage.setFullScreen(true);
+        stage.setResizable(false);
         stage.show();
     }
 
@@ -36,43 +58,46 @@ public class BasketSceneController {
     private URL location;
 
     @FXML
-    private TableColumn<?, ?> Activity;
+    private TableColumn<Section, String> Activity;
 
     @FXML
-    private TableColumn<?, ?> AddRemove;
+    private TableColumn<Section, Integer> CRN;
 
     @FXML
-    private TableColumn<?, ?> CRN;
+    private TableColumn<Section, String> CourseName;
 
     @FXML
-    private TableColumn<?, ?> CourseName;
+    private TableColumn<Section, String> course;
 
     @FXML
-    private TableColumn<?, ?> CourseSec;
+    private TableColumn<Section, String> Day;
 
     @FXML
-    private TableColumn<?, ?> Day;
-
-    @FXML
-    private TableColumn<?, ?> Instructor;
+    private TableColumn<Section, String> Instructor;
 
     @FXML
     private Button Next;
 
     @FXML
+    private TableColumn<Section, Button1> add;
+
+    @FXML
+    private TableColumn<Section, Button1> remove;
+
+    @FXML
     private Button SavedSchedule;
 
     @FXML
-    private TableColumn<?, ?> Status;
+    private TableColumn<Section, String> Status;
 
     @FXML
-    private TableColumn<?, ?> Time;
+    private TableColumn<Section, String> Time;
 
     @FXML
-    private TableColumn<?, ?> WaitList;
+    private TableColumn<Section, String> WaitList;
 
     @FXML
-    private TableView<?> table;
+    private TableView<Section> table;
 
     @FXML
     void OnNextClicked(ActionEvent event) {
@@ -80,26 +105,56 @@ public class BasketSceneController {
     }
 
     @FXML
-    void OnSavedClicked(ActionEvent event) {
+    void OnSavedClicked(ActionEvent event) throws IOException, ClassNotFoundException {
+        // FileInputStream fileInputStream = new FileInputStream("SavedSections.dat");
+        // ObjectInputStream objInStream = new ObjectInputStream(fileInputStream);
+        // ArrayList<Course> a = (ArrayList<Course>) objInStream.readObject();
+        // Section.setCart(a);
+        // objInStream.close();
+
+        FileOutputStream fileOutputStream = new FileOutputStream("SavedSections.dat");
+        ObjectOutputStream obj = new ObjectOutputStream(fileOutputStream);
+        ArrayList<Course> a = Section.getCart();
+        System.out.println(a);
+        obj.writeObject(a);
+        obj.close();
 
     }
 
     @FXML
-    void initialize() {
-        assert Activity != null : "fx:id=\"Activity\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert AddRemove != null : "fx:id=\"AddRemove\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert CRN != null : "fx:id=\"CRN\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert CourseName != null : "fx:id=\"CourseName\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert CourseSec != null : "fx:id=\"CourseSec\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert Day != null : "fx:id=\"Day\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert Instructor != null : "fx:id=\"Instructor\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert Next != null : "fx:id=\"Next\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert SavedSchedule != null : "fx:id=\"SavedSchedule\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert Status != null : "fx:id=\"Status\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert Time != null : "fx:id=\"Time\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert WaitList != null : "fx:id=\"WaitList\" was not injected: check your FXML file 'MainFrame.fxml'.";
-        assert table != null : "fx:id=\"table\" was not injected: check your FXML file 'MainFrame.fxml'.";
+    public void handler(ActionEvent e) {
+        // System.out.println(a.getCourseName());
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // System.out.println(CRN);
+        // TODO Auto-generated method stub
+        course.setCellValueFactory(new PropertyValueFactory<Section, String>("courseName"));
+        Activity.setCellValueFactory(new PropertyValueFactory<Section, String>("Activity"));
+        CRN.setCellValueFactory(new PropertyValueFactory<Section, Integer>("CRN"));
+        CourseName.setCellValueFactory(new PropertyValueFactory<Section, String>("courseDesc"));
+        Instructor.setCellValueFactory(new PropertyValueFactory<Section, String>("Instructor"));
+        Day.setCellValueFactory(new PropertyValueFactory<Section, String>("Day"));
+        Time.setCellValueFactory(new PropertyValueFactory<Section, String>("time"));
+        Status.setCellValueFactory(new PropertyValueFactory<Section, String>("Status"));
+        WaitList.setCellValueFactory(new PropertyValueFactory<Section, String>("waitList"));
+        add.setCellValueFactory(new PropertyValueFactory<Section, Button1>("addButton"));
+        WaitList.setCellValueFactory(new PropertyValueFactory<Section, String>("waitList"));
+        add.setCellValueFactory(new PropertyValueFactory<Section, Button1>("addButton"));
+        remove.setCellValueFactory(new PropertyValueFactory<Section, Button1>("removeButton"));
+        setUpTable();
+
+    }
+
+    public void setUpTable() {
+
+        for (int i = 0; i < secList.size(); i++) {
+            Course a = secList.get(i);
+            table.getItems().add((Section) a);
+
+        }
     }
 
 }
