@@ -72,8 +72,8 @@ public class Section extends Course {
         this.removeButton.setScaleX(0);
     }
 
-    public String getNameAndSection() {
-        return this.getCourseName() + "-" + this.getSectionNumber();
+        public String getNameWithoutSec() {
+        return super.getCourseName();
     }
 
     public int getCRN() {
